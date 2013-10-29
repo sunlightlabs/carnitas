@@ -1,0 +1,8 @@
+Flask==0.10.1
+gevent==0.13.8
+gunicorn==18.0
+python-postmark==0.3.2
+python-postmark-inbound==0.1.1
+raven==3.5.1
+requests==2.0.1
+blinker==1.3

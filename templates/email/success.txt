@@ -1,0 +1,12 @@
+Hi friend!
+
+We're quite excited that you decided to give our APIs a whirl. Here is your new API key, fresh from the API key factory:
+
+{{ key }}
+
+Visit http://sunlightfoundation.com/api/ for documentation. Create a new account with the same email address ({{ email }}) and we'll match you up with your key.
+
+Thanks for trying our APIs and for attending the event!
+
+Sincerely yours,
+Sunlight Foundation

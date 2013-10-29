@@ -1,0 +1,8 @@
+Hi friend!
+
+Bad news. We are not currently accepting API key registrations via email.
+
+Visit http://sunlightfoundation.com/api/ to create a key and get started with our APIs.
+
+Sincerely yours,
+Sunlight Foundation
