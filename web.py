@@ -128,12 +128,7 @@ def mailto_redirect():
     subject = "Hello API"
     body = "Just hit Send and you'll receive a response containing your API key."
 
-    params = {
-        'subject': urllib.quote(subject),
-        'body': urllib.quote(body),
-    }
-
-    return redirect('mailto:%s?%s' % (SERVICE_EMAIL, urllib.urlencode(params)))
+    return redirect('mailto:%s?subject=%s&body=%s' % (SERVICE_EMAIL, subject, body))
 
 
 if __name__ == '__main__':
