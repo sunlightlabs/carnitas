@@ -85,8 +85,9 @@ def register_key(addr, name):
 
 app = Flask(__name__)
 
-app.config['SENTRY_DSN'] = SENTRY_DSN
-sentry = Sentry(app)
+if SENTRY_DSN:
+    app.config['SENTRY_DSN'] = SENTRY_DSN
+    sentry = Sentry(app)
 
 
 #
