@@ -126,7 +126,7 @@ def email_handler():
 def mailto_redirect():
 
     subject = "Hello API"
-    body = "Just hit Send and you'll receive an email containing your new API key.\n\nYou'll also be agreeing to our terms of service, which you can read at http://sunlightfoundation.com/api/usage/terms."
+    body = "Just hit Send and you'll receive an email containing your new API key. You'll also be agreeing to our terms of service, which you can read at http://sunlightfoundation.com/api/usage/terms."
 
     return redirect('mailto:%s?subject=%s&body=%s' % (SERVICE_EMAIL, subject, body))
 
