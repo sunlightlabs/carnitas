@@ -8,7 +8,7 @@ import requests
 from postmark_inbound import PostmarkInbound
 from raven.contrib.flask import Sentry
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 
 
 #
@@ -88,6 +88,7 @@ app = Flask(__name__)
 app.config['SENTRY_DSN'] = SENTRY_DSN
 sentry = Sentry(app)
 
+
 #
 # routes
 #
@@ -118,6 +119,18 @@ def email_handler():
             disabled_notification(addr)
 
     return ''
+
+
+@app.route('/email', methods=['GET'])
+def mailto_redirect():
+
+    subject = """Hello"""
+    subject = urllib.urlencode(subject)
+
+    message = """Just hit Send and you'll receive a response containing your API key."""
+    message = urllib.urlencode(message)
+
+    return redirect('mailto:%s?subject=%s&body=%s' % (SERVICE_EMAIL, subject, message))
 
 
 if __name__ == '__main__':
