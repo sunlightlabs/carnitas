@@ -125,13 +125,12 @@ def email_handler():
 @app.route('/email', methods=['GET'])
 def mailto_redirect():
 
-    subject = """Hello"""
-    subject = urllib.urlencode(subject)
+    params = {
+        'subject': """Hello API""",
+        'body': """Just hit Send and you'll receive a response containing your API key.""",
+    }
 
-    message = """Just hit Send and you'll receive a response containing your API key."""
-    message = urllib.urlencode(message)
-
-    return redirect('mailto:%s?subject=%s&body=%s' % (SERVICE_EMAIL, subject, message))
+    return redirect('mailto:%s?%s' % (SERVICE_EMAIL, urllib.urlencode(params)))
 
 
 if __name__ == '__main__':
