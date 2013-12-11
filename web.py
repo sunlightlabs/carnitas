@@ -28,6 +28,7 @@ SENTRY_DSN = os.environ.get('SENTRY_DSN')
 
 REGISTRATION_ENABLED = os.environ.get('REGISTRATION_ENABLED', '') != ''
 
+ENABLED_HASHES = os.environ.get('ENABLED_HASHES', '').split(',')
 
 #
 # API registration
@@ -106,12 +107,13 @@ def email_handler():
 
     if valid_recipients:
 
-        sender = email.sender()
+        if REGISTRATION_ENABLED and email.mailbox_hash() in ENABLED_HASHES:
 
-        addr = sender.get('Email')
-        name = sender.get('Name')
+            sender = email.sender()
 
-        if REGISTRATION_ENABLED:
+            addr = sender.get('Email')
+            name = sender.get('Name')
+
             key = register_key(addr, name)
             key_notification(key, addr)
             app.logger.debug('key = %s' % key)
