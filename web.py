@@ -103,7 +103,7 @@ def email_handler():
     app.logger.debug('recipient addr = %s' % email.to())
     app.logger.debug('sender addr = %s' % email.sender())
 
-    valid_recipients = [e for e in email.to() if e.get('Email') == SERVICE_EMAIL]
+    valid_recipients = [e for e in email.to() if e.get('Email').startswith(SERVICE_EMAIL)]
 
     if valid_recipients:
 
