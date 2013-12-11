@@ -107,12 +107,12 @@ def email_handler():
 
     if valid_recipients:
 
+        sender = email.sender()
+
+        addr = sender.get('Email')
+        name = sender.get('Name')
+
         if REGISTRATION_ENABLED and email.mailbox_hash() in ENABLED_HASHES:
-
-            sender = email.sender()
-
-            addr = sender.get('Email')
-            name = sender.get('Name')
 
             key = register_key(addr, name)
             key_notification(key, addr)
