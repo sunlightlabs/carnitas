@@ -77,7 +77,7 @@ def register_key(addr, name):
     params['signature'] = get_signature(params)
     resp = requests.post(SUNLIGHT_URL, params)
     data = resp.json()
-    return data['key']
+    return data.get('key')
 
 
 #
@@ -115,8 +115,12 @@ def email_handler():
         if REGISTRATION_ENABLED and email.mailbox_hash() in ENABLED_HASHES:
 
             key = register_key(addr, name)
-            key_notification(key, addr)
-            app.logger.debug('key = %s' % key)
+
+            if key:
+                key_notification(key, addr)
+                app.logger.debug('key = %s' % key)
+            else:
+                disabled_notification(addr)
 
         else:
             disabled_notification(addr)
